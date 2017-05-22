@@ -1,0 +1,22 @@
+# Eclipse
+.project
+.classpath
+.settings
+
+# Idea
+.idea
+*.iml
+*.iws
+*.ipr
+
+# Gradle
+/.gradle/
+/bin/
+
+# Maven
+target
+
+# OS
+Thumbs.db
+.DS_Store
+
