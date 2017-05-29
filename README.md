@@ -1,17 +1,19 @@
 # food-web
-## tutorial
-### 실행방법
-- [food-docker](https://github.com/kodevops/food-docker/)를 먼저 실행합니다.
-- Java Application을 실행합니다
-  - src/main/java/com/kodeveloper/food/FoodApplication.java
-- 브라우저를 기동하여, 아래의 URL에 접속합니다.
+## 실행하기
+아래의 순서대로 실행하여 어플리케이션을 기동할 수 있습니다.
 
-### 접속 URL
+- [food-docker](https://github.com/kodevops/food-docker/)를 실행합니다.
+- 아래의 클래스를 Java Application으로 실행합니다
+  - src/main/java/com/kodeveloper/food/FoodApplication.java
+
+## 접속 가능한 URL
+어플러케이션이 기동하면 브라우저를 통해 다음과 같은 URL에 접속할 수 있습니다.
+
 - http://localhost:8080/ 
 - http://localhost:8080/mongo/save/
-  - 저장하는 샘플코드    
+  - Customer를 저장하는 샘플코드    
 - http://localhost:8080/mongo/findAll/
-  - 취득하는 샘플코드
+  - 저장된 Customer 일람을 취득하는 샘플코드
 
 ## Spring Boot 2.0
 [10.1.1 Maven installation](http://docs.spring.io/spring-boot/docs/2.0.0.M1/reference/htmlsingle/#getting-started-maven-installation)
