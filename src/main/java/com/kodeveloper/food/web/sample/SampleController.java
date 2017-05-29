@@ -1,21 +1,22 @@
 package com.kodeveloper.food.web.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by yaksaa on 2017/05/29.
  */
-@Controller
+@RestController
 public class SampleController {
 
-    @Autowired
-//    private CustomerRepository repository;
-
-    @RequestMapping(path = "/mongo")
-    public void mongo () {
-        System.out.println(11111);
+    @RequestMapping("/")
+    String home() {
+        return "Hello World!";
     }
 
 }
