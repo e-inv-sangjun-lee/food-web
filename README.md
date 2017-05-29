@@ -1,10 +1,10 @@
 # food-web
 ## tutorial
 ### 실행방법
-- [food-docker](/kodevops/food-docker/)를 먼저 실행합니다.
+- [food-docker](https://github.com/kodevops/food-docker/)를 먼저 실행합니다.
 - Java Application을 실행합니다
   - src/main/java/com/kodeveloper/food/FoodApplication.java
-- 브라우저로 접속 
+- 브라우저를 기동하여, 아래의 URL에 접속합니다.
 
 ### 접속 URL
 - http://localhost:8080/ 
