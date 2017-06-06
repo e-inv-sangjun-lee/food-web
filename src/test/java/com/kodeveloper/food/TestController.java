@@ -34,7 +34,9 @@ class TestController {
         client(SampleController::new).get().uri("/").exchange()
                 .expectStatus().isOk()
                 .expectBody().consumeAsStringWith( response -> {
-                        assertThat(response).isEqualTo("Hello World!");
+                        assertThat(response).contains("<html>");
+                        assertThat(response).contains("Hello World!");
+                        assertThat(response).contains("</html>");
                 });
     }
 

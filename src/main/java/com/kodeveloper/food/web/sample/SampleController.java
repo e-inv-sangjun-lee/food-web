@@ -1,22 +1,28 @@
 package com.kodeveloper.food.web.sample;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable;
+import reactor.core.publisher.Flux;
 
 /**
  * Created by yaksaa on 2017/05/29.
  */
-@RestController
+@Controller
 public class SampleController {
 
+    private final String [] messages = {"H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"};
+
     @RequestMapping("/")
-    String home() {
-        return "Hello World!";
+    String index(final Model model) {
+        model.addAttribute("messages", messages);
+        return "index";
     }
 
+    @RequestMapping("/reactive")
+    String reactiveIndex(final Model model) {
+        model.addAttribute("messages", new ReactiveDataDriverContextVariable(Flux.just(messages)));
+        return "index";
+    }
 }

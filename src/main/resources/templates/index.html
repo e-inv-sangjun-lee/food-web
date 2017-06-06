@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Hello World!</title>
+</head>
+<body>
+  <h1>Hello World!</h1>
+  <div>Type of Variable(messages) is <span th:text="${messages.getClass().getSimpleName()}">class name</span></div>
+  <div>
+      <span th:each="message : ${messages}" th:text="${message}">span</span>
+  </div>
+</body>
+</html>

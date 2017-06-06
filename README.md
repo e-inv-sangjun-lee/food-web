@@ -10,12 +10,15 @@
 어플러케이션이 기동하면 브라우저를 통해 다음과 같은 URL에 접속할 수 있습니다.
 
 - http://localhost:8080/ 
+  - Hello World! 출력
+- http://localhost:8080/reactive/
+  - Hello World! 출력(reactive버전)
 - http://localhost:8080/mongo/save/
   - Customer를 저장하는 샘플코드    
-- http://localhost:8080/mongo/findAll/
-  - 저장된 Customer 일람을 취득하는 샘플코드
 - http://localhost:8080/reactivemongo/save/
   - Customer를 저장하는 샘플코드(reactive버전)   
+- http://localhost:8080/mongo/findAll/
+  - 저장된 Customer 일람을 취득하는 샘플코드
 - http://localhost:8080/reactivemongo/findAll/
   - 저장된 Customer 일람을 취득하는 샘플코드(reactive버전) 
 
@@ -27,6 +30,10 @@
 #### Spring 5 
 #### Spring Data MongoDB Reactive
 #### Spring WebFlux
+#### Thymeleaf3
+[Thymeleaf / Reactive Demo](https://github.com/meistermeier/reactive-thymeleaf)
+
+※ 개발중일 때는 cache를 false로 사용합니다. IntelliJ 를 이용할 경우, html 수정후 Ctrl + F9를 실행해야 변경한 html이 반영됩니다.
 
 ## Used technologies(middleware)
 ### Mongo DB
