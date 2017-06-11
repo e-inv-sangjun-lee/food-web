@@ -1,4 +1,14 @@
 # food-web
+
+## 필수
+gradle: <= v3.4
+
+## 준비
+```
+# gradle 빌드
+./gradlew clean build
+```
+
 ## 실행하기
 아래의 순서대로 실행하여 어플리케이션을 기동할 수 있습니다.
 
