@@ -10,8 +10,10 @@
 *.ipr
 
 # Gradle
-/.gradle/
-/bin/
+.gradletasknamecache
+.gradle/
+bin/
+build/
 
 # Maven
 target
@@ -19,4 +21,9 @@ target
 # OS
 Thumbs.db
 .DS_Store
+
+# Other
+*.log
+*.swp
+*.bak
 
