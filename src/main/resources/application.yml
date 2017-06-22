@@ -1,9 +1,7 @@
 spring:
-  profiles: dev
   data:
     mongodb:
       uri: mongodb://192.168.123.186:27017/admin
-#     uri: mongodb://<user>:<passwd>@<url>:<port>/<dbname>
   thymeleaf:
-    mode: HTML
-    check-template: false
+    mode: HTML5
+    cache: false

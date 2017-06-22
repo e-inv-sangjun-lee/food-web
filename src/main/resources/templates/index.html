@@ -2,13 +2,63 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Hello World!</title>
+    <title>Hello Food!</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <div>Type of Variable(messages) is <span th:text="${messages.getClass().getSimpleName()}">class name</span></div>
-  <div>
-      <span th:each="message : ${messages}" th:text="${message}">span</span>
-  </div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '693002950883911',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    function statusChangeCallback(response) {
+        if (response.status === 'connected') {
+            $.ajax({
+                type : 'get',
+                url: "/login/completeProcess" ,
+                data: response.authResponse,
+                contentType: 'application/json',
+                dataType: "json",
+                scriptCharset: 'utf-8',
+                success : function(data) {
+                    console.debug("success");
+                    window.location.href = '/login/complete';
+                },
+                error : function(data) {
+                    console.debug("error");
+                    $("#status").html(JSON.stringify(data));
+                }
+            });
+        } else if (response.status === 'not_authorized') {
+            $("#status").html('このサイトにログインしてください');
+        } else {
+            $("#status").html('facebookにログインしてください');
+        }
+    }
+</script>
+  <h1>Hello Food!</h1>
+  <div>Facebookでログイン</div>
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" />
+  <div id="status"></div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </body>
 </html>
