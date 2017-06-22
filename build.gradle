@@ -4,7 +4,7 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext {
         springBootReleaseVersion = '1.5.4.RELEASE'
-        springBootVersion    = '2.0.0.M1'
+        springBootVersion    = '2.0.0.M2'
         junitVersion         = '1.0.0-M4'
         junit4Version        = '4.12'
         junitVintageVersion  = '4.12.0-M4'
@@ -16,7 +16,7 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url 'http://repo.spring.io/snapshot' }
-        maven { url 'https://repo.spring.io/libs-milestone' }
+        maven { url 'https://repo.spring.io/milestone' }
     }
 
     dependencies {
@@ -50,7 +50,7 @@ compileTestJava {
 repositories {
     mavenCentral()
     maven { url 'http://repo.spring.io/snapshot' }
-    maven { url 'https://repo.spring.io/libs-milestone' }
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 /*
