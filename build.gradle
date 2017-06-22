@@ -4,7 +4,7 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext {
         springBootReleaseVersion = '1.5.4.RELEASE'
-        springBootVersion    = '2.0.0.M2'
+        springBootVersion    = '2.0.0.M1'
         junitVersion         = '1.0.0-M4'
         junit4Version        = '4.12'
         junitVintageVersion  = '4.12.0-M4'
@@ -76,6 +76,7 @@ junitPlatform {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-webflux")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // for test
@@ -86,6 +87,8 @@ dependencies {
 
     // embedded MongoDB
     compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+
+    compileOnly("org.projectlombok:lombok")
 
     // JUnit Jupiter API and TestEngine implementation
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
