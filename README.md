@@ -31,6 +31,8 @@ gradle: <= v3.4
   - 저장된 Customer 일람을 취득하는 샘플코드
 - http://localhost:8080/reactivemongo/findAll/
   - 저장된 Customer 일람을 취득하는 샘플코드(reactive버전) 
+- http://localhost:8080/setup/
+  - setup 페이지 출력
 
 ## Used technologies
 ### Spring Boot 2.0.0.BUILD-SNAPSHOT
