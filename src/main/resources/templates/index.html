@@ -1,21 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head th:replace="include/layout :: common_header(~{::title},~{})">
     <title>Hello Food!</title>
-
-    <!-- Bootstrap itself -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/magister.css">
-
-    <!-- Fonts -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
-
 </head>
-
 <!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
 <body class="theme-invert">
 
@@ -67,9 +54,9 @@
     <!-- Load js libs only when the page is loaded. -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="js/modernizr.custom.72241.js"></script>
+    <script th:src="@{/js/modernizr.custom.72241.js}"></script>
     <!-- Custom template scripts -->
-    <script src="js/magister.js"></script>
+    <script th:src="@{/js/magister.js}"></script>
 
     <script>
         window.fbAsyncInit = function() {
@@ -97,28 +84,34 @@
         }
 
         function statusChangeCallback(response) {
-            if (response.status === 'connected') {
-                $.ajax({
-                    type : 'get',
-                    url: "/login/completeProcess" ,
-                    data: response.authResponse,
-                    contentType: 'application/json',
-                    dataType: "json",
-                    scriptCharset: 'utf-8',
-                    success : function(data) {
-                        console.debug("success");
-                        window.location.href = '/login/complete';
-                    },
-                    error : function(data) {
-                        console.debug("error");
-                        $("#status").html(JSON.stringify(data));
-                    }
-                });
-            } else if (response.status === 'not_authorized') {
-                $("#status").html('このサイトにログインしてください');
-            } else {
-                $("#status").html('facebookにログインしてください');
-            }
+            FB.api("/me", function (r) {
+
+                response.authResponse.name = r.name;
+                var data = response.authResponse;
+
+                if (response.status === 'connected') {
+                    $.ajax({
+                        type: 'get',
+                        url: "/login/completeProcess" ,
+                        data: data,
+                        contentType: 'application/json',
+                        dataType: "json",
+                        scriptCharset: 'utf-8',
+                        success: function(data) {
+                            console.log("success");
+                            window.location.href = '/login/complete';
+                        },
+                        error: function(data) {
+                            console.log("error");
+                            $("#status").html('ログインが失敗しました');
+                        }
+                    });
+                } else if (response.status === 'not_authorized') {
+                    $("#status").html('このサイトにログインしてください');
+                } else {
+                    $("#status").html('facebookにログインしてください');
+                }
+            });
         }
     </script>
 </body>

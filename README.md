@@ -47,6 +47,10 @@ gradle: <= v3.4
 
 ※ 개발중일 때는 cache를 false로 사용합니다. IntelliJ 를 이용할 경우, html 수정후 Ctrl + F9를 실행해야 변경한 html이 반영됩니다.
 
+## Facebook login
+### Gragh API
+https://developers.facebook.com/docs/graph-api/reference/
+
 ## Used technologies(middleware)
 ### Mongo DB
 - http://docs.spring.io/spring-boot/docs/2.0.0.M1/reference/htmlsingle/#boot-features-mongodb

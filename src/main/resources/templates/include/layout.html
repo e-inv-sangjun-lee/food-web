@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 各Viewのタイトル -->
+    <title th:replace="${title}">The awesome application</title>
+
+    <!-- Bootstrap itself -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- 各View固有で読み込むリンク -->
+    <th:block th:replace="${links}" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" th:href="@{/css/magister.css}">
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+</body>
+</html>
