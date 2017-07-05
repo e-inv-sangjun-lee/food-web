@@ -59,7 +59,10 @@ https://developers.facebook.com/docs/graph-api/reference/
 
 ※어플리케이션 종료시 데이터가 남지 않습니다(embeded버전 이용중).
 
-## Used technologies(in test)
+## Used technologies(test & ETC)
+### devtools
+소스코드 변경시, 서버의 재기동을 최소화 또는 자동으로 재시작합니다.
+
 ### JUnit 5
 [Spring Framework 5.0 Test関連の主な変更点](http://qiita.com/kazuki43zoo/items/4a9ead225a9a9897af4a)
 

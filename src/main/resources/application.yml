@@ -2,6 +2,3 @@ spring:
   data:
     mongodb:
       uri: mongodb://192.168.123.186:27017/admin
-  thymeleaf:
-    mode: HTML5
-    cache: false
