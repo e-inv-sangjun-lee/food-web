@@ -18,21 +18,21 @@ import java.util.List;
 @RequestMapping(path = "/mongo")
 public class SampleMongoDBController {
 
-    private ReactiveCustomerRepository repository;
+    private CustomerRepository repository;
 
-    public SampleMongoDBController (ReactiveCustomerRepository repository) {
+    public SampleMongoDBController (CustomerRepository repository) {
         this.repository = repository;
     }
 
     @RequestMapping(path = "/save")
-    public Mono<Customer> save () {
+    public Customer save () {
         return repository.save(new Customer(
                 "kodeveloper",
                 DateTimeFormatter.ofPattern("MMddHHmmss").format(LocalDateTime.now())));
     }
 
     @RequestMapping(path = "/findAll")
-    public Flux<Customer> findAll() {
+    public List<Customer> findAll() {
         return repository.findAll();
     }
 }
