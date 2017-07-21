@@ -6,23 +6,7 @@
 <!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
 <body class="theme-invert">
 
-    <!--
-    <div id="status"></div>
-    <nav class="mainmenu">
-        <div class="container">
-            <div class="dropdown">
-                <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li><a href="#head" class="active">Hello</a></li>
-                    <li><a href="#about">About me</a></li>
-                    <li><a href="#themes">Themes</a></li>
-                    <li><a href="#contact">Get in touch</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    - >
-
+    <th:block th:include="include/mainmenu :: body"></th:block>
 
     <!-- Main (Home) section -->
     <section class="section" id="head">
