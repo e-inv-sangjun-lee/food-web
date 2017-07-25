@@ -2,6 +2,12 @@ spring:
   data:
     mongodb:
       uri: mongodb://192.168.123.186:27017/admin
-security:
-  basic:
-    enabled: false
+  social:
+    facebook:
+      app-id: 693002950883911
+      app-secret: 3686fea404528224ed00d0244fdfbfbd
+logging:
+  level:
+    root: ERROR
+    org.thymeleaf: DEBUG
+    org.springframework.boot: DEBUG

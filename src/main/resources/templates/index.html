@@ -27,7 +27,6 @@
 
                     <!-- Nice place to describe your site in a sentence or two -->
                     <!-- <p><a href="/download/" class="btn btn-default btn-lg">Download template now</a></p> -->
-                    <p><fb:login-button scope="public_profile,email" onlogin="checkLoginState();" /></p>
                 </div> <!-- /col -->
             </div> <!-- /row -->
 
@@ -41,62 +40,5 @@
     <script th:src="@{/js/modernizr.custom.72241.js}"></script>
     <!-- Custom template scripts -->
     <script th:src="@{/js/magister.js}"></script>
-
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '693002950883911',
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v2.8'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
-        }
-
-        function statusChangeCallback(response) {
-            FB.api("/me", function (r) {
-
-                response.authResponse.name = r.name;
-                var data = response.authResponse;
-
-                if (response.status === 'connected') {
-                    $.ajax({
-                        type: 'get',
-                        url: "/login/completeProcess" ,
-                        data: data,
-                        contentType: 'application/json',
-                        dataType: "json",
-                        scriptCharset: 'utf-8',
-                        success: function(data) {
-                            console.log("success");
-                            window.location.href = '/login/complete';
-                        },
-                        error: function(data) {
-                            console.log("error");
-                            $("#status").html('ログインが失敗しました');
-                        }
-                    });
-                } else if (response.status === 'not_authorized') {
-                    $("#status").html('このサイトにログインしてください');
-                } else {
-                    $("#status").html('facebookにログインしてください');
-                }
-            });
-        }
-    </script>
 </body>
 </html>

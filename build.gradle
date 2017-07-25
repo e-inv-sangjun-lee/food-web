@@ -42,9 +42,11 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+
+    // for facebook login
+    compile("org.springframework.social:spring-social-facebook")
 
     // for test
     compile("org.springframework.boot:spring-boot-starter-test")
