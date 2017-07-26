@@ -30,7 +30,7 @@ public class IndexController {
     @GetMapping("/")
     public String helloFacebook(Model model) {
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
-            return "redirect:/connect/facebook";
+            return "index";
         }
 
         {
@@ -41,6 +41,6 @@ public class IndexController {
         }
         PagedList<Post> feed = facebook.feedOperations().getFeed();
         model.addAttribute("feed", feed);
-        return "connect/hello";
+        return "index";
     }
 }

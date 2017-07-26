@@ -25,11 +25,33 @@
                         당신에게 맞는 맛집을 알려줄게요!
                     </h3>
 
+
+                    <form action="/connect/facebook" method="POST" th:if="${facebookProfile == null}">
+                        <input type="hidden" name="scope" value="user_posts" />
+                        <p><button type="submit">Facebook 로그인</button></p>
+                    </form>
+
                     <!-- Nice place to describe your site in a sentence or two -->
                     <!-- <p><a href="/download/" class="btn btn-default btn-lg">Download template now</a></p> -->
                 </div> <!-- /col -->
             </div> <!-- /row -->
 
+
+            <div class="row" th:if="${facebookProfile != null}">
+                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+                    <h3>Hello, <span th:text="${facebookProfile.name}">Some User</span>!</h3>
+                    <h4>Here is your feed:</h4>
+                </div>
+            </div>
+
+            <div class="row" th:if="${facebookProfile != null}">
+                <div th:each="post:${feed}" class="col-md-2 col-lg-2 col-md-offset-1 col-lg-offset-1 text-center">
+                    <hr/>
+                    <b th:text="${post.from.name}">from</b> wrote:
+                    <p th:text="${post.message}">message text</p>
+                    <img th:if="${post.picture}" th:src="${post.picture}"/>
+                </div>
+            </div>
         </div>
     </section>
 
