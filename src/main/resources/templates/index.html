@@ -25,12 +25,33 @@
                         당신에게 맞는 맛집을 알려줄게요!
                     </h3>
 
+
+                    <form action="/connect/facebook" method="POST" th:if="${facebookProfile == null}">
+                        <input type="hidden" name="scope" value="user_posts" />
+                        <p><button type="submit">Facebook 로그인</button></p>
+                    </form>
+
                     <!-- Nice place to describe your site in a sentence or two -->
                     <!-- <p><a href="/download/" class="btn btn-default btn-lg">Download template now</a></p> -->
-                    <p><fb:login-button scope="public_profile,email" onlogin="checkLoginState();" /></p>
                 </div> <!-- /col -->
             </div> <!-- /row -->
 
+
+            <div class="row" th:if="${facebookProfile != null}">
+                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+                    <h3>Hello, <span th:text="${facebookProfile.name}">Some User</span>!</h3>
+                    <h4>Here is your feed:</h4>
+                </div>
+            </div>
+
+            <div class="row" th:if="${facebookProfile != null}">
+                <div th:each="post:${feed}" class="col-md-2 col-lg-2 col-md-offset-1 col-lg-offset-1 text-center">
+                    <hr/>
+                    <b th:text="${post.from.name}">from</b> wrote:
+                    <p th:text="${post.message}">message text</p>
+                    <img th:if="${post.picture}" th:src="${post.picture}"/>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -41,62 +62,5 @@
     <script th:src="@{/js/modernizr.custom.72241.js}"></script>
     <!-- Custom template scripts -->
     <script th:src="@{/js/magister.js}"></script>
-
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '693002950883911',
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v2.8'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
-        }
-
-        function statusChangeCallback(response) {
-            FB.api("/me", function (r) {
-
-                response.authResponse.name = r.name;
-                var data = response.authResponse;
-
-                if (response.status === 'connected') {
-                    $.ajax({
-                        type: 'get',
-                        url: "/login/completeProcess" ,
-                        data: data,
-                        contentType: 'application/json',
-                        dataType: "json",
-                        scriptCharset: 'utf-8',
-                        success: function(data) {
-                            console.log("success");
-                            window.location.href = '/login/complete';
-                        },
-                        error: function(data) {
-                            console.log("error");
-                            $("#status").html('ログインが失敗しました');
-                        }
-                    });
-                } else if (response.status === 'not_authorized') {
-                    $("#status").html('このサイトにログインしてください');
-                } else {
-                    $("#status").html('facebookにログインしてください');
-                }
-            });
-        }
-    </script>
 </body>
 </html>

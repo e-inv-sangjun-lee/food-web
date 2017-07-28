@@ -51,6 +51,9 @@ gradle: <= v3.4
 ### Gragh API
 https://developers.facebook.com/docs/graph-api/reference/
 
+### Login sample2
+- https://spring.io/guides/gs/accessing-facebook/
+
 ## Used technologies(middleware)
 ### Mongo DB
 - http://docs.spring.io/spring-boot/docs/2.0.0.M1/reference/htmlsingle/#boot-features-mongodb
